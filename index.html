@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Jahout</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<table id='map'>
+	</table>
+	<div id='stats'>
+		<div id='health'>
+			<label>Health: </label>
+			<label id='healthLabel'>1000</label>
+		</div>
+		<div id='hunger'>
+			<label>Hunger: </label>
+			<label id='hungerLabel'>1200</label>
+		</div>
+		<div id='water'>
+			<label>Water: </label>
+			<label id='waterLabel'>720</label>
+		</div>
+		<div id='fatigue'>
+			<label>Fatigue: </label>
+			<label id='fatigueLabel'>1440</label>
+		</div>
+		<div id='power'>
+			<label>Power: </label>
+			<label id='powerLabel'>1000</label>
+		</div>
+	</div>
+	<div id='actionContainer'>
+		<table id='actions'>
+		</table>
+	</div>
+	<div id='time'>
+		<label>Time: </label>
+		<label id='timeLabel'>00Y, 00D - 00H:00M:00S </label>
+	</div>
+	<textarea id='notes' readonly></textarea>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/Main.js"></script>	
+	<script src="js/dataobj/Tile.js"></script>	
+	<script src="js/managers/MapMgr.js"></script>	
+	<script src="js/managers/TurnMgr.js"></script>	
+	<script src="js/managers/StatsMgr.js"></script>	
+	<script src="js/Time.js"></script>	
+	<script src="js/MapDisplay.js"></script>	
+	<script src="js/ActionDisplay.js"></script>	
+</body>
+</html>

@@ -1,0 +1,53 @@
+.maptile {
+	width: 30px;
+	height: 30px;	
+}
+
+#map {
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+#stats {
+	position: absolute;
+	left: 800px;
+	top: 10px;
+}
+
+#time {
+	position: absolute;
+	left: 800px;
+	top: 600px;
+}
+
+#notes {
+	width: 300px;
+	height: 90px;
+	resize: none;
+	position: absolute;
+	left: 800px;
+	top: 500px;
+}
+
+#actions {
+	border: 1px;
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+
+.actionTile {
+	width: 60px;
+	height: 60px;
+}
+
+#actionContainer {
+	height: 300px;
+	width: 280px;
+	overflow: auto;
+	position: absolute;
+	left: 800px;
+	top: 120px;
+}
+
+
+
