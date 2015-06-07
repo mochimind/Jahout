@@ -29,13 +29,4 @@ JH.MMgr.GetTile = function(ycoord, xcoord) {
 	return JH.MMgr.map[ycoord][xcoord];
 };
 
-JH.MMgr.MoveToTile = function(unit, sourcey, sourcex, desty, destx) {
-	var tile = JH.MMgr.GetTile(sourcey, sourcex);
-	tile.unit = null;
-	JH.Tile.Refresh(tile);
-	
-	tile = JH.MMgr.GetTile(desty, destx);
-	tile.unit = unit;
-	JH.Tile.Refresh(tile);
-};
 

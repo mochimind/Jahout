@@ -6,6 +6,7 @@ $(function(){
 	JH.MD.Init();
 	JH.SM.Init();
 	JH.Actions.Init();
+	JH.UM.Init();
 
 	JH.Main.Annotate("Welcome to Jahout");
 	
