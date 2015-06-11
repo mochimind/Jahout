@@ -6,6 +6,16 @@
 #map {
 	border-collapse: collapse;
 	border-spacing: 0px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#inventory {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: none;
 }
 
 #stats {

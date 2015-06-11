@@ -7,6 +7,40 @@
 <body>
 	<table id='map'>
 	</table>
+	<table id='inventory'>
+		<tr>
+			<td>Helmet</td>
+			<td id='inv_head'></td>
+		</tr>
+		<tr>
+			<td>Clothes</td>
+			<td id='inv_clothes'></td>
+		</tr>
+		<tr>
+			<td>Armor</td>
+			<td id='inv_armor'></td>
+		</tr>
+		<tr>
+			<td>Pack</td>
+			<td id='inv_pack'></td>
+		</tr>
+		<tr>
+			<td>Utility 1</td>
+			<td id='inv_utility1'></td>
+		</tr>
+		<tr>
+			<td>Utility 2</td>
+			<td id='inv_utility2'></td>
+		</tr>
+		<tr>
+			<td>Left Hand</td>
+			<td id='inv_lefthand'></td>
+		</tr>
+		<tr>
+			<td>Right Hand</td>
+			<td id='inv_righthand'></td>
+		</tr>
+	</table>
 	<div id='stats'>
 		<div id='health'>
 			<label>Health: </label>
@@ -43,12 +77,15 @@
 	<script src="js/Main.js"></script>	
 	<script src="js/dataobj/Tile.js"></script>	
 	<script src="js/dataobj/Unit.js"></script>	
+	<script src="js/dataobj/Equipment.js"></script>	
 	<script src="js/managers/MapMgr.js"></script>	
 	<script src="js/managers/TurnMgr.js"></script>	
 	<script src="js/managers/StatsMgr.js"></script>	
 	<script src="js/managers/UnitMgr.js"></script>	
+	<script src="js/managers/InventoryMgr.js"></script>	
 	<script src="js/Time.js"></script>	
-	<script src="js/MapDisplay.js"></script>	
-	<script src="js/ActionDisplay.js"></script>	
+	<script src="js/display/MapDisplay.js"></script>	
+	<script src="js/display/ActionDisplay.js"></script>	
+	<script src="js/display/InventoryDisplay.js"></script>	
 </body>
 </html>

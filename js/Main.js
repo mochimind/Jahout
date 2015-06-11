@@ -4,9 +4,12 @@ JH.Main = {};
 $(function(){
 	JH.MMgr.Init();
 	JH.MD.Init();
+	JH.IM.Init();
 	JH.SM.Init();
 	JH.Actions.Init();
 	JH.UM.Init();
+	
+	JH.Inventory.Init();
 
 	JH.Main.Annotate("Welcome to Jahout");
 	
@@ -22,6 +25,15 @@ $(function(){
 			JH.MD.MoveDown();
 		} 
 	});
+	
+	JH.Actions.AddAction("Inventory", JH.Inventory.TogglePanel);
+	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.citizen));
+	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.dsevest));
+	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.spacesuit));
+	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.dsehelmet));
+	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.dsemule));
+	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.msdoc));
+	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.echef));
 });
 
 JH.Main.Annotate = function(str) {
