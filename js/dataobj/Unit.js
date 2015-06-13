@@ -13,12 +13,14 @@ JH.Unit.Create = function(type, coords) {
 		outObj.speed = 70;
 		outObj.actionCounter = 0;
 		outObj.coords = coords;
+		outObj.description = "Billow: A mostly harmless chubby meaty thing. Mostly harmless";
 	} else if (type == JH.Unit.Player) {
 		outObj.img = "img/dude.png";
 		outObj.hp = 1000;
 		outObj.speed = 15;
 		outObj.actionCounter = 0;
 		outObj.coords = coords;
+		outObj.description = "You: You stare intently at yourself, trying to glean some semblance of insight from the experience";
 	}
 	
 	if (type != JH.Unit.Player) { JH.TM.RegisterListener(JH.Unit.HandleTurn, outObj); }

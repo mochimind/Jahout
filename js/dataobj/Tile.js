@@ -21,4 +21,24 @@ JH.Tile.Refresh = function(tile) {
 	}
 };
 
+JH.Tile.GetImg = function(tile) {
+	if (tile.unit != null) { return tile.unit.img; }
+	if (tile.terrain == JH.Tile.GravelTerrain) {
+		return "img/gravel.png";
+	} else if (tile.terrain == JH.Tile.RockyTerrain) {
+		return "img/rocky.png";
+	} else if (tile.terrain == JH.Tile.ImpassableTerrain) {
+		return "img/impassable.png";
+	}
+};
 
+JH.Tile.GetDescription = function(tile) {
+	if (tile.unit != null) { return tile.unit.description; }
+	if (tile.terrain == JH.Tile.GravelTerrain) {
+		return "Gravel Terrain: A nondescript patch of dirty dirt. Useful if you like dirt";
+	} else if (tile.terrain == JH.Tile.RockyTerrain) {
+		return "Rocky Terrain: There are some scattered rocks here. May come in handy if someone's trying to blow a hole through you";
+	} else if (tile.terrain == JH.Tile.ImpassableTerrain) {
+		return "Impassable Terrain: The terrain here is just not suited for moving through. Don't ask why";
+	}
+};

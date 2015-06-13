@@ -17,32 +17,27 @@ JH.MD.Init = function() {
 			var td = $("<td></td>");
 			tr.append(td);
 			var img = $("<img class='maptile'>");
+			img.click(function(a, b) {
+				return function() { JH.MD.HandleClick(a, b); };
+			}(i, j));
 			td.append(img);
 			JH.MD.cells[i].push(img);
-			JH.MD.SetIMGSrc(JH.MMgr.GetTile(JH.MD.referenceTile[0]+i, JH.MD.referenceTile[1]+j), i, j);
+			JH.MD.cells[i][j].attr("src", JH.Tile.GetImg(JH.MD.GetUniversalTile(i,j)));
 		}
 		JH.MD.container.append(tr);
 	}
 };
 
-JH.MD.SetIMGSrc = function(tile, x, y) {
-	if (tile.unit != null) {
-		JH.MD.cells[x][y].attr("src", tile.unit.img);
-		return;
-	}
-	if (tile.terrain == JH.Tile.GravelTerrain) {
-		JH.MD.cells[x][y].attr("src", "img/gravel.png");
-	} else if (tile.terrain == JH.Tile.RockyTerrain) {
-		JH.MD.cells[x][y].attr("src", "img/rocky.png");
-	} else if (tile.terrain == JH.Tile.ImpassableTerrain) {
-		JH.MD.cells[x][y].attr("src", "img/impassable.png");
-	}
+JH.MD.HandleClick = function(i, j) {
+	var tile = JH.MD.GetUniversalTile(i,j);
+	$("#targetPicture").attr("src",JH.Tile.GetImg(tile));
+	$("#targetText").text(JH.Tile.GetDescription(tile));
 };
 
 JH.MD.Redraw = function() {
 	for (var i=0 ; i<JH.MD.cells.length ; i++) {
 		for (var j=0 ; j<JH.MD.cells[0].length ; j++) {
-			JH.MD.SetIMGSrc(JH.MMgr.GetTile(JH.MD.referenceTile[0]+i, JH.MD.referenceTile[1]+j), i, j);
+			JH.MD.cells[i][j].attr("src", JH.Tile.GetImg(JH.MD.GetUniversalTile(i,j)));
 		}
 	}
 };
@@ -87,3 +82,6 @@ JH.MD.MoveDown = function() {
 	JH.TM.PlayerMove();
 };
 
+JH.MD.GetUniversalTile = function(i, j) {
+	return JH.MMgr.GetTile(JH.MD.referenceTile[0] + i, JH.MD.referenceTile[1] + j);
+};

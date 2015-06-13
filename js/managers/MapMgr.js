@@ -10,6 +10,7 @@ JH.MMgr.Init = function() {
 		for (var j=0 ; j<JH.MMgr.mapSize[1] ; j++) {
 			var picker = Math.floor(Math.random() * 100);
 			var tileType;
+			var description;
 			if (picker < 75) {
 				tileType = JH.Tile.GravelTerrain;
 			} else if (picker < 90) {
