@@ -1,5 +1,7 @@
 var JH = {};
 JH.Main = {};
+JH.Main.keydown = false;
+JH.Main.keyTiming = 200;
 
 $(function(){
 	JH.UM.Init();
@@ -18,17 +20,47 @@ $(function(){
 
 	JH.Main.Annotate("Welcome to Jahout");
 	
-	$(document).keyup(function(e) {
-		//console.log("keydown: " + e.keyCode);
+	$(document).keydown(function(e) {
 		if (e.keyCode == 37) {
-			JH.MD.MoveLeft();
+			if (!JH.Main.keydown) {
+				JH.MD.MoveLeft();
+				JH.Main.keyRepeater = setInterval(function() {
+					if (JH.Main.keyRepeater != null) { 
+						JH.MD.MoveLeft();
+					}
+				}, JH.Main.keyTiming);
+				JH.Main.keydown = true;
+			}
 		} else if (e.keyCode == 38) {
-			JH.MD.MoveUp();
+			if (!JH.Main.keydown) {
+				JH.MD.MoveUp();
+				JH.Main.keyRepeater = setInterval(function() {
+					if (JH.Main.keyRepeater != null) { JH.MD.MoveUp(); }
+				}, JH.Main.keyTiming);
+				JH.Main.keydown = true;
+			}
 		} else if (e.keyCode == 39) {
-			JH.MD.MoveRight();
+			if (!JH.Main.keydown) {
+				JH.MD.MoveRight();
+				JH.Main.keyRepeater = setInterval(function() {
+					if (JH.Main.keyRepeater != null) { JH.MD.MoveRight(); }
+				}, JH.Main.keyTiming);
+				JH.Main.keydown = true;
+			}
 		} else if (e.keyCode == 40) {
-			JH.MD.MoveDown();
+			if (!JH.Main.keydown) {
+				JH.MD.MoveDown();
+				JH.Main.keyRepeater = setInterval(function() {
+					if (JH.Main.keyRepeater != null) { JH.MD.MoveDown(); }
+				}, JH.Main.keyTiming);
+				JH.Main.keydown = true;
+			}
 		} 
+	});
+	$(document).keyup(function(e) {
+		window.clearInterval(JH.Main.keyRepeater);
+		JH.Main.keyRepeater = null;
+		JH.Main.keydown = false;
 	});
 	
 	JH.Actions.AddAction("Inventory", JH.Inventory.TogglePanel);
