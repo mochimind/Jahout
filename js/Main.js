@@ -2,12 +2,17 @@ var JH = {};
 JH.Main = {};
 
 $(function(){
+	JH.UM.Init();
 	JH.MMgr.Init();
+
+	JH.UM.AddUnit(JH.Unit.Player, JH.MMgr.spawn);
+	JH.UM.AddUnit(JH.Unit.Billow, [25,25]);
+
+	
 	JH.MD.Init();
 	JH.IM.Init();
 	JH.SM.Init();
 	JH.Actions.Init();
-	JH.UM.Init();
 	
 	JH.Inventory.Init();
 
@@ -27,6 +32,7 @@ $(function(){
 	});
 	
 	JH.Actions.AddAction("Inventory", JH.Inventory.TogglePanel);
+	JH.Actions.AddAction("Attack", JH.TargetD.HandleAttack);
 	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.citizen));
 	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.dsevest));
 	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.spacesuit));

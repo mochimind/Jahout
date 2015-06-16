@@ -4,12 +4,11 @@ JH.SM.hunger = 1200;
 JH.SM.water = 720;
 JH.SM.fatigue = 1440;
 
-JH.SM.range = 1;
-JH.SM.damage = 2;
-JH.SM.armor = 0;
+// clarification: this handles player stats
 
 JH.SM.Init = function() {
 	JH.TM.RegisterListener(JH.SM.HandleTime);
+	JH.SM.player = JH.UM.GetPlayer();
 };
 
 JH.SM.HandleTime = function(elapsedTime) {
@@ -28,11 +27,11 @@ JH.SM.HandleTime = function(elapsedTime) {
 
 JH.SM.SetWeapon = function(range, damage) {
 	if (typeof range == undefined || typeof damage == undefined) {
-		JH.SM.range = 1;
-		JH.SM.damage = 2;
+		JH.SM.player.range = 1;
+		JH.SM.player.damage = 5;
 	} else {
-		JH.SM.range = range;
-		JH.SM.damage = damage;
+		JH.SM.player.range = range;
+		JH.SM.player.damage = damage;
 	}
 };
 
@@ -40,7 +39,7 @@ JH.SM.AddArmor = function(armor) {
 	if (typeof armor == undefined) {
 		return;
 	}
-	JH.SM.armor += armor;
+	JH.SM.player.armor += armor;
 };
 
 JH.SM.UpdateDisplay = function() {

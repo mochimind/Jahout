@@ -17,7 +17,6 @@ JH.Equipment.msdoc = "MedServ Doc";
 JH.Equipment.echef = "Everyman Chef";
 
 JH.Equipment.Create = function(type) {
-	console.log("creating: " + type);
 	
 	var obj = {};
 	obj.type = type;

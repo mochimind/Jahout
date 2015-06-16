@@ -1,7 +1,7 @@
 JH.MMgr = {};
 
 JH.MMgr.map = [];
-JH.MMgr.spawn = [];
+JH.MMgr.spawn = [20,20];
 JH.MMgr.mapSize = [1000,1000];
 
 JH.MMgr.Init = function() {
@@ -21,7 +21,6 @@ JH.MMgr.Init = function() {
 			JH.MMgr.map[i].push(JH.Tile.Create(tileType, null, null));
 		}
 	}
-	JH.MMgr.spawn = [20,20];
 };
 
 JH.MMgr.GetTile = function(ycoord, xcoord) {
@@ -30,4 +29,18 @@ JH.MMgr.GetTile = function(ycoord, xcoord) {
 	return JH.MMgr.map[ycoord][xcoord];
 };
 
+JH.MMgr.AddUnit = function(y, x, unit) {
+	var tile = JH.MMgr.GetTile(y, x);
+	if (tile.unit != null) { return false; }
+	tile.unit = unit;
+	JH.Tile.Refresh(tile);
+	return true;
+};
 
+JH.MMgr.RemoveUnit = function(y, x, unit) {
+	var tile = JH.MMgr.GetTile(y,x);
+	if (tile.unit == null) { return false; }
+	tile.unit = null;
+	JH.Tile.Refresh(tile);
+	return true;
+};

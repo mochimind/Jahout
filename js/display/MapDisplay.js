@@ -3,11 +3,12 @@ JH.MD.cells = [];
 JH.MD.userTile = [];
 JH.MD.referenceTile = [];
 JH.MD.tilesAroundUser = 8;
+JH.MD.activeTarget;
 // 1,1 represents the block the user is currently on
 
 JH.MD.Init = function() {
 	JH.MD.referenceTile = [JH.MMgr.spawn[0]-JH.MD.tilesAroundUser, JH.MMgr.spawn[1]-JH.MD.tilesAroundUser];
-	JH.MD.player = JH.Unit.Create(JH.Unit.Player, JH.MMgr.spawn);
+	JH.MD.player = JH.UM.GetPlayer();
 	
 	JH.MD.container = $("#map");
 	for (var i=0 ; i<1+2*JH.MD.tilesAroundUser ; i++) {
@@ -18,7 +19,7 @@ JH.MD.Init = function() {
 			tr.append(td);
 			var img = $("<img class='maptile'>");
 			img.click(function(a, b) {
-				return function() { JH.MD.HandleClick(a, b); };
+				return function() { JH.TargetD.HandleClick(a, b); };
 			}(i, j));
 			td.append(img);
 			JH.MD.cells[i].push(img);
@@ -26,12 +27,6 @@ JH.MD.Init = function() {
 		}
 		JH.MD.container.append(tr);
 	}
-};
-
-JH.MD.HandleClick = function(i, j) {
-	var tile = JH.MD.GetUniversalTile(i,j);
-	$("#targetPicture").attr("src",JH.Tile.GetImg(tile));
-	$("#targetText").text(JH.Tile.GetDescription(tile));
 };
 
 JH.MD.Redraw = function() {
@@ -48,8 +43,7 @@ JH.MD.MoveLeft = function() {
 	if (!JH.MMgr.GetTile(desty, destx).traversable) { return;}
 	JH.Unit.MoveToTile(JH.MD.player, desty, destx);
 	JH.MD.referenceTile[1] -= 1;
-	JH.MD.Redraw();
-	JH.TM.PlayerMove();
+	JH.TM.PlayerAction();
 };
 
 JH.MD.MoveUp = function() {
@@ -58,8 +52,7 @@ JH.MD.MoveUp = function() {
 	if (!JH.MMgr.GetTile(desty, destx).traversable) { return;}
 	JH.Unit.MoveToTile(JH.MD.player, desty, destx);
 	JH.MD.referenceTile[0] -= 1;
-	JH.MD.Redraw();
-	JH.TM.PlayerMove();
+	JH.TM.PlayerAction();
 };
 
 JH.MD.MoveRight = function() {
@@ -68,8 +61,7 @@ JH.MD.MoveRight = function() {
 	if (!JH.MMgr.GetTile(desty, destx).traversable) { return;}
 	JH.Unit.MoveToTile(JH.MD.player, desty, destx);
 	JH.MD.referenceTile[1] += 1;
-	JH.MD.Redraw();
-	JH.TM.PlayerMove();
+	JH.TM.PlayerAction();
 };
 
 JH.MD.MoveDown = function() {
@@ -78,8 +70,7 @@ JH.MD.MoveDown = function() {
 	if (!JH.MMgr.GetTile(desty, destx).traversable) { return;}
 	JH.Unit.MoveToTile(JH.MD.player, desty, destx);
 	JH.MD.referenceTile[0] += 1;
-	JH.MD.Redraw();
-	JH.TM.PlayerMove();
+	JH.TM.PlayerAction();
 };
 
 JH.MD.GetUniversalTile = function(i, j) {
