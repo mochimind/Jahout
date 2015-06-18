@@ -35,18 +35,17 @@ JH.AI.Create = function(type) {
 };
 
 JH.AI.HandleEvent = function(unit, event, args) {
-	console.log("handling event: " + event);
 	switch (event) {
 	case JH.AI.attacked:
 		if (unit.ai.type != JH.AI.passive) {
-			unit.ai.attackers.push(args);
+			JH.AI.AddAttacker(unit.ai, args);
 			JH.AI.UpdateTarget(unit);
 			unit.ai.state = JH.AI.attacking;
 		}
 		break;
 	case JH.AI.seeUnit:
 		if (unit.ai.type == JH.AI.aggressive) {
-			outObj.attackers.push(args);
+			JH.AI.AddAttacker(unit.ai, args);
 			JH.AI.UpdateTarget(unit);
 			unit.ai.state = JH.AI.attacking;
 		}
@@ -79,7 +78,6 @@ JH.AI.UpdateTarget = function(unit) {
 };
 
 JH.AI.HandleTurn = function(unit) {
-	console.log("handling turn: " + unit.ai.state + "||" + unit.target);
 	switch(unit.ai.state) {
 	case JH.AI.attacking:
 		if (JH.TargetMgr.CanAttack(unit)) {
@@ -95,10 +93,8 @@ JH.AI.HandleTurn = function(unit) {
 };
 
 JH.AI.MoveTowards = function(unit, coords) {
-	console.log("got: " + unit + "||" + coords[0] + "||" + coords[1]);
 	var xdiff = unit.coords[1] - coords[1];
 	var ydiff = unit.coords[0] - coords[0];
-	console.log("differences: " + xdiff + "||" + ydiff);
 	if (Math.abs(xdiff) > Math.abs(ydiff)) {
 		if (xdiff > 0) {
 			if (JH.AI.MoveInDirection(unit, JH.AI.directionLeft)) { return true; }
@@ -171,4 +167,9 @@ JH.AI.RandomMove = function(unit) {
 	}
 };
 
-
+JH.AI.AddAttacker = function(ai, attacker) {
+	for (var i=0 ; i<ai.attackers.length ; i++) {
+		if (ai.attackers[i] == attackers) { return; }
+	}
+	unit.ai.attackers.push(args);
+};

@@ -12,11 +12,11 @@ $(function(){
 
 	
 	JH.MD.Init();
-	JH.IM.Init();
+	JH.EM.Init();
 	JH.SM.Init();
 	JH.Actions.Init();
 	
-	JH.Inventory.Init();
+	JH.ItemD.Init();
 
 	JH.Main.Annotate("Welcome to Jahout");
 	
@@ -63,19 +63,20 @@ $(function(){
 		JH.Main.keydown = false;
 	});
 	
-	JH.Actions.AddAction("Inventory", JH.Inventory.TogglePanel);
+	JH.Actions.AddAction("Equipment", JH.ItemD.TogglePanel);
 	JH.Actions.AddAction("Attack", JH.TargetD.HandleAttack);
-	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.citizen));
-	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.dsevest));
-	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.spacesuit));
-	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.dsehelmet));
-	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.dsemule));
-	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.msdoc));
-	JH.IM.Equip(JH.Equipment.Create(JH.Equipment.echef));
+	JH.EM.Equip(JH.Item.Create(JH.Item.citizen));
+	JH.EM.Equip(JH.Item.Create(JH.Item.dsevest));
+	JH.EM.Equip(JH.Item.Create(JH.Item.spacesuit));
+	JH.EM.Equip(JH.Item.Create(JH.Item.dsehelmet));
+	JH.EM.Equip(JH.Item.Create(JH.Item.dsemule));
+	JH.EM.Equip(JH.Item.Create(JH.Item.msdoc));
+	JH.EM.Equip(JH.Item.Create(JH.Item.echef));
 });
 
 JH.Main.Annotate = function(str) {
 	$("#notes").append(str + "\n");
+	$("#notes").scrollTop($("#notes")[0].scrollHeight - $("#notes").height());
 };
 
 JH.Main.PrintObj = function(obj) {

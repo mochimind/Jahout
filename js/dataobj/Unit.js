@@ -14,12 +14,14 @@ JH.Unit.Create = function(type, coords) {
 		outObj.damage = 15;
 		outObj.description = "Billow: A mostly harmless slow chubby meaty thing. Mostly harmless";
 		outObj.ai = JH.AI.Create(JH.AI.neutral);
+		outObj.loot = [[JH.Item.citizen, 1]];
 	} else if (type == JH.Unit.Player) {
 		outObj.img = "img/dude.png";
 		outObj.hp = [1000, 1000];
 		outObj.speed = 15;
 		outObj.damage = 5;
 		outObj.description = "You: You stare intently at yourself, trying to glean some semblance of insight from the experience";
+		outObj.loot = [];
 	}
 	outObj.armor = 0;
 	outObj.range = 1;
@@ -32,6 +34,7 @@ JH.Unit.Create = function(type, coords) {
 };
 
 JH.Unit.Destroy = function(unit) {
+	JH.LootTable.GenerateLoot(unit.loot, unit.coords);
 	JH.MMgr.RemoveUnit(unit.coords[0], unit.coords[1], unit);
 	JH.UM.Destroy(unit);
 	JH.TM.UnregisterListener(JH.Unit.HandleTurn, unit);
