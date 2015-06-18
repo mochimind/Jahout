@@ -1,7 +1,7 @@
 JH.Unit = {};
 
 JH.Unit.Billow = "Billow";
-JH.Unit.Player = "player";
+JH.Unit.Player = "You";
 
 JH.Unit.Create = function(type, coords) {
 	var outObj = {};
@@ -9,10 +9,11 @@ JH.Unit.Create = function(type, coords) {
 	
 	if (type == JH.Unit.Billow) {
 		outObj.img = "img/billow.png";
-		outObj.hp = [8,8];
+		outObj.hp = [50,50];
 		outObj.speed = 70;
 		outObj.damage = 15;
 		outObj.description = "Billow: A mostly harmless slow chubby meaty thing. Mostly harmless";
+		outObj.ai = JH.AI.Create(JH.AI.neutral);
 	} else if (type == JH.Unit.Player) {
 		outObj.img = "img/dude.png";
 		outObj.hp = [1000, 1000];
@@ -37,17 +38,33 @@ JH.Unit.Destroy = function(unit) {
 	JH.Main.Annotate(unit.type + " has died");
 };
 
+JH.Unit.TakeDamage = function(attacker, defender, damage) {
+	defender.hp[1] -= attacker.damage;
+	if (defender.ai != null) {
+		JH.AI.HandleEvent(defender, JH.AI.attacked, attacker);
+	} else {
+		JH.SM.UpdateDisplay();
+	}
+	if (defender.hp[1] <= 0) {
+		if (attacker.ai != null) {
+			JH.AI.HandleEvent(attacker, JH.AI.targetDead, defender);
+		} else {
+			attacker.target = null;			
+		}
+		JH.Unit.Destroy(defender);
+	}
+};
+
 JH.Unit.HandleTurn = function(time, unit) {
 	unit.actionCounter += time;
 	if (unit.actionCounter > unit.speed) {
 		var actions = Math.floor(unit.actionCounter / unit.speed);
 		unit.actionCounter %= unit.speed;
-		if (unit.type == JH.Unit.Billow) {
-			// move in a random direction
+		if (unit.ai != null) {
 			for (var i=0 ; i<actions ; i++) {
-				JH.Unit.RandomMove(unit);
+				JH.AI.HandleTurn(unit);
 			}
-		}		
+		}
 	}
 };
 
@@ -63,30 +80,4 @@ JH.Unit.MoveToTile = function(unit, desty, destx) {
 	unit.coords = [desty, destx];
 };
 
-JH.Unit.RandomMove = function(unit) {
-	var decider = Math.floor(Math.random() * 4);
-	var destX;
-	var destY;
-	if (decider == 0) {
-		destX = unit.coords[1]-1;
-		destY = unit.coords[0];
-	} else if (decider == 1) {
-		destX = unit.coords[1]+1;
-		destY = unit.coords[0];
-	} else if (decider == 2) {
-		destX = unit.coords[1];
-		destY = unit.coords[0]-1;
-	} else {
-		destX = unit.coords[1];
-		destY = unit.coords[0]+1;
-	}
-	
-	var destTile = JH.MMgr.GetTile(destY, destX);
-	if (destTile != null && destTile.traversable == true) {
-		JH.Unit.MoveToTile(unit, destY, destX);
-		return true;
-	} else {
-		return false;
-	}
-};
 

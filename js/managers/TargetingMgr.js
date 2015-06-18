@@ -6,21 +6,18 @@ JH.TargetMgr.SetTarget = function(unit, target) {
 
 // this function doesn't do error checking! it assumes that anyone attack has already called CanAttack
 JH.TargetMgr.Attack = function(unit) {
-	unit.target.hp[1] -= unit.damage;
-	if (unit.target.hp[1] <= 0) {
-		JH.Unit.Destroy(unit.target);
-		unit.target = null;
-	}
+	JH.Main.Annotate(unit.type + " hit the " + unit.target.type + " for " + unit.damage + " damage");
+	JH.Unit.TakeDamage(unit, unit.target);
 };
 
 JH.TargetMgr.CanAttack = function(unit) {
 	if (unit.target == null) { return false; }
-	if (unit.range >= JH.TargetMgr.GetDistance(unit, unit.target)) {
+	if (unit.range >= JH.TargetMgr.GetDistance(unit.coords, unit.target.coords)) {
 		return true;
 	}
 	return false;
 };
 
-JH.TargetMgr.GetDistance = function(unit1, unit2) {
-	return Math.abs(unit1.coords[0] - unit2.coords[0]) + Math.abs(unit1.coords[1] - unit2.coords[1]);	
+JH.TargetMgr.GetDistance = function(coord1, coord2) {
+	return Math.abs(coord1[0] - coord2[0]) + Math.abs(coord1[1] - coord2[1]);	
 };

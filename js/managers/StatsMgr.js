@@ -46,5 +46,6 @@ JH.SM.UpdateDisplay = function() {
 	$("#hungerLabel").text(JH.SM.hunger);
 	$("#waterLabel").text(JH.SM.water);
 	$("#fatigueLabel").text(JH.SM.fatigue);
+	$("#healthLabel").text(JH.SM.player.hp[1]);
 };
 

@@ -18,6 +18,16 @@ JH.UM.GetPlayer = function() {
 	}
 };
 
+JH.UM.GetUnitsInSight = function(coord, sightRange) {
+	var outArr = [];
+	for (var i=0 ; i<JH.UM.units.length ; i++) {
+		if (JH.TargetMgr.GetDistance(coord, JH.UM.units[i].coords) <= sightRange) {
+			outArr.push(JH.UM.units[i]);
+		}
+	}
+	return outArr;
+};
+
 JH.UM.Destroy = function(unit) {
 	for (var i=0; i<JH.UM.units.length ; i++) {
 		if (JH.UM.units[i] == unit) {

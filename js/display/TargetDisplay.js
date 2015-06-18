@@ -23,7 +23,6 @@ JH.TargetD.HandleAttack = function() {
 	}
 	
 	if (JH.TargetMgr.CanAttack(JH.TargetD.player)) {
-		JH.Main.Annotate("You hit the " + JH.TargetD.player.target.type + " for " + JH.TargetD.player.damage + " damage");
 		JH.TargetMgr.Attack(JH.TargetD.player);
 		if (JH.TargetD.player.target == null) {
 			JH.TargetD.ClearTargeting();
