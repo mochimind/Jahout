@@ -85,7 +85,7 @@ JH.AI.HandleTurn = function(unit) {
 		if (JH.TargetMgr.CanAttack(unit)) {
 			JH.TargetMgr.Attack(unit);
 		} else {
-			JH.AI.MoveTowards(unit, JH.MMgr.GetTile(unit.target.coords[0], unit.target.coords[1]));
+			JH.AI.MoveTowards(unit, unit.target.coords);
 		}
 		break;
 	case JH.AI.rest:
@@ -95,29 +95,31 @@ JH.AI.HandleTurn = function(unit) {
 };
 
 JH.AI.MoveTowards = function(unit, coords) {
+	console.log("got: " + unit + "||" + coords[0] + "||" + coords[1]);
 	var xdiff = unit.coords[1] - coords[1];
 	var ydiff = unit.coords[0] - coords[0];
+	console.log("differences: " + xdiff + "||" + ydiff);
 	if (Math.abs(xdiff) > Math.abs(ydiff)) {
 		if (xdiff > 0) {
-			if (JH.AI.MoveInDirection(JH.AI.directionLeft)) { return true; }
+			if (JH.AI.MoveInDirection(unit, JH.AI.directionLeft)) { return true; }
 		} else if (xdiff < 0){
-			if (JH.AI.MoveInDirection(JH.AI.directionRight)) { return true; }
+			if (JH.AI.MoveInDirection(unit, JH.AI.directionRight)) { return true; }
 		}
 		if (ydiff > 0) {
-			if (JH.AI.MoveInDirection(JH.AI.directionDown)) { return true; }
+			if (JH.AI.MoveInDirection(unit, JH.AI.directionUp)) { return true; }
 		} else if (ydiff < 0){
-			if (JH.AI.MoveInDirection(JH.AI.directionUp)) { return true; }
+			if (JH.AI.MoveInDirection(unit, JH.AI.directionDown)) { return true; }
 		}
 	} else {
 		if (ydiff > 0) {
-			if (JH.AI.MoveInDirection(JH.AI.directionDown)) { return true; }
+			if (JH.AI.MoveInDirection(unit, JH.AI.directionUp)) { return true; }
 		} else if (ydiff < 0){
-			if (JH.AI.MoveInDirection(JH.AI.directionUp)) { return true; }
+			if (JH.AI.MoveInDirection(unit, JH.AI.directionDown)) { return true; }
 		}
 		if (xdiff > 0) {
-			if (JH.AI.MoveInDirection(JH.AI.directionLeft)) { return true; }
+			if (JH.AI.MoveInDirection(unit, JH.AI.directionLeft)) { return true; }
 		} else if (xdiff < 0){
-			if (JH.AI.MoveInDirection(JH.AI.directionRight)) { return true; }
+			if (JH.AI.MoveInDirection(unit, JH.AI.directionRight)) { return true; }
 		}
 	}
 	
@@ -125,6 +127,7 @@ JH.AI.MoveTowards = function(unit, coords) {
 };
 
 JH.AI.MoveInDirection = function(unit, direction) {
+	console.log("moving in direction" + "||" + direction);
 	var destX;
 	var destY;
 	switch(direction) {
