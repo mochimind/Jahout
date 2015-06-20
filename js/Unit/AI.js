@@ -168,8 +168,9 @@ JH.AI.RandomMove = function(unit) {
 };
 
 JH.AI.AddAttacker = function(ai, attacker) {
+	if (ai == null) { return; }
 	for (var i=0 ; i<ai.attackers.length ; i++) {
-		if (ai.attackers[i] == attackers) { return; }
+		if (ai.attackers[i] == attacker) { return; }
 	}
-	unit.ai.attackers.push(args);
+	ai.attackers.push(attacker);
 };
