@@ -16,13 +16,12 @@ $(function(){
 	JH.SM.Init();
 	
 	JH.ItemD.Init();
+	JH.InvDisp.Init();
 	JH.KeyMgr.Init();
 
 	JH.Main.Annotate("Welcome to Jahout");
 	
 	
-	JH.ActionMgr.AddAction("Equipment", JH.ItemD.TogglePanel);
-	JH.ActionMgr.AddAction("Attack", JH.TargetD.HandleAttack);
 	JH.EM.Equip(JH.Item.Create(JH.Item.citizen));
 	JH.EM.Equip(JH.Item.Create(JH.Item.dsevest));
 	JH.EM.Equip(JH.Item.Create(JH.Item.spacesuit));

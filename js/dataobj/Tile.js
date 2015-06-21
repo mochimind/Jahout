@@ -46,6 +46,6 @@ JH.Tile.GetDescription = function(tile) {
 	}
 };
 
-JH.Tile.AddLoot = function(tile, loot) {
-	tile.loot.push(loot);
+JH.Tile.AddLoot = function(tile, loot, count) {
+	tile.loot.push([loot, count]);
 };

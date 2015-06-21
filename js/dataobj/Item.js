@@ -27,22 +27,36 @@ JH.Item.Create = function(type) {
 			JH.SM.SetWeapon(3, 5);
 		};
 		obj.onUnequip = function() { JH.SM.SetWeapon(); };
+		obj.bulk = 8;
+		obj.weight = 3;
 	} else if (type == JH.Item.dsevest) {
 		obj.slot = JH.Item.slot.armor;
 		obj.onEquip = function() { JH.SM.AddArmor(10); };
 		obj.onUnequip = function() { JH.SM.AddArmor(-10); };
+		obj.bulk = 30;
+		obj.weight = 15;
 	} else if (type == JH.Item.spacesuit) {
 		obj.slot = JH.Item.slot.clothes;
+		obj.bulk = 25;
+		obj.weight = 20;
 	} else if (type == JH.Item.dsehelmet) {		
 		obj.slot = JH.Item.slot.head;
 		obj.onEquip = function() { JH.SM.AddArmor(3); };
 		obj.onUnequip = function() { JH.SM.AddArmor(-3); };
+		obj.bulk = 35;
+		obj.weight = 15;
 	} else if (type == JH.Item.dsemule) {
 		obj.slot = JH.Item.slot.pack;
+		obj.bulk = 15;
+		obj.weight = 8;
 	} else if (type == JH.Item.msdoc) {
 		obj.slot = JH.Item.slot.utility;
+		obj.bulk = 9;
+		obj.weight = 12;
 	} else if (type == JH.Item.echef) {
 		obj.slot = JH.Item.slot.utility;
+		obj.bulk = 6;
+		obj.weight = 8;
 	} else {
 		return null;
 	}

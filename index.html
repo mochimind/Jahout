@@ -7,7 +7,7 @@
 <body>
 	<table id='map'>
 	</table>
-	<table id='inventory'>
+	<table id='equipment' class='popup'>
 		<tr>
 			<td>Helmet</td>
 			<td id='inv_head'></td>
@@ -41,6 +41,8 @@
 			<td id='inv_righthand'></td>
 		</tr>
 	</table>
+	<ul id='inventory' class='popup'>
+	</ul>
 	<div id='stats'>
 		<div id='health'>
 			<label>Health: </label>
@@ -85,6 +87,7 @@
 	<script src="js/dataobj/Item.js"></script>	
 	<script src="js/managers/ActionMgr.js"></script>	
 	<script src="js/managers/EquipmentMgr.js"></script>	
+	<script src="js/managers/InventoryMgr.js"></script>	
 	<script src="js/managers/KeyboardMgr.js"></script>	
 	<script src="js/managers/MapMgr.js"></script>	
 	<script src="js/managers/StatsMgr.js"></script>	
@@ -94,6 +97,8 @@
 	<script src="js/display/MapDisplay.js"></script>	
 	<script src="js/display/ActionDisplay.js"></script>	
 	<script src="js/display/EquipmentDisplay.js"></script>	
+	<script src="js/display/InventoryDisplay.js"></script>	
+	<script src="js/display/LootDisplay.js"></script>	
 	<script src="js/display/TargetDisplay.js"></script>	
 	<script src="js/Unit/AI.js"></script>	
 	<script src="js/Unit/LootTable.js"></script>	

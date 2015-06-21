@@ -2,16 +2,17 @@ JH.ItemD = {};
 
 JH.ItemD.Init = function() {
 	JH.ItemD.Update();
+	JH.ActionMgr.AddAction("Equipment", JH.ItemD.TogglePanel);
 };
 
 JH.ItemD.ShowPanel = function() {
 	$("#map").hide();
-	$("#inventory").show();
+	$("#equipment").show();
 };
 
 JH.ItemD.HidePanel = function() {
 	$("#map").show();
-	$("#inventory").hide();
+	$("#equipment").hide();
 };
 
 JH.ItemD.TogglePanel = function() {

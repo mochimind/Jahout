@@ -5,12 +5,22 @@ JH.TargetD.HandleClick = function(i, j) {
 	$("#targetPicture").attr("src",JH.Tile.GetImg(tile));
 	$("#targetText").text(JH.Tile.GetDescription(tile));
 	JH.TargetMgr.SetTarget(JH.MD.player, tile.unit);
+	
+	if (tile.unit !== null && tile.unit.ai != null) {
+		JH.TargetD.actionKey = JH.ActionMgr.AddAction("Attack", JH.TargetD.HandleAttack);		
+	} else if (JH.TargetD.actionKey != null) {
+		JH.ActionMgr.RemoveAction(JH.TargetD.actionKey);
+	}
 };
 
 JH.TargetD.ClearTargeting = function() {
 	$("#targetPicture").attr("src","");
 	$("#targetText").text("");
 	JH.TargetMgr.SetTarget(JH.MD.player, null);
+	
+	if (JH.TargetD.actionKey != null) {
+		JH.ActionMgr.RemoveAction(JH.TargetD.actionKey);		
+	}
 };
 
 JH.TargetD.HandleAttack = function() {
