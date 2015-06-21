@@ -1,32 +1,21 @@
 JH.MMgr = {};
 
-JH.MMgr.map = [];
-JH.MMgr.spawn = [20,20];
-JH.MMgr.mapSize = [1000,1000];
+JH.MMgr.map = {};
+JH.MMgr.spawn = [0,0];
 
 JH.MMgr.Init = function() {
-	for (var i=0 ; i<JH.MMgr.mapSize[0] ; i++) {
-		JH.MMgr.map.push([]);
-		for (var j=0 ; j<JH.MMgr.mapSize[1] ; j++) {
-			var picker = Math.floor(Math.random() * 100);
-			var tileType;
-			var description;
-			if (picker < 75) {
-				tileType = JH.Tile.GravelTerrain;
-			} else if (picker < 90) {
-				tileType = JH.Tile.RockyTerrain;
-			} else {
-				tileType = JH.Tile.ImpassableTerrain;
-			}
-			JH.MMgr.map[i].push(JH.Tile.Create(tileType, null, null));
-		}
-	}
+	
 };
 
 JH.MMgr.GetTile = function(ycoord, xcoord) {
-	if (ycoord < 0 || ycoord >= JH.MMgr.map.length) { return null; }
-	if (xcoord < 0 || xcoord >= JH.MMgr.map[0].length) { return null; }
-	return JH.MMgr.map[ycoord][xcoord];
+	var blockY = Math.floor(ycoord / JH.MapBlock.size);
+	var blockX = Math.floor(xcoord / JH.MapBlock.size);
+	var blockKey = ""+blockY+"|"+blockX;
+	// may need to optimize this. create a 4 block buffer in this function that's looked at first before hitting the hashtable
+	if (JH.MMgr.map[blockKey] == undefined) {
+		JH.MMgr.map[blockKey] = JH.MapBlock.Create();
+	}
+	return JH.MapBlock.GetTile(JH.MMgr.map[blockKey], Math.abs(ycoord % JH.MapBlock.size), Math.abs(xcoord % JH.MapBlock.size));
 };
 
 JH.MMgr.AddUnit = function(y, x, unit) {
