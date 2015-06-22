@@ -29,6 +29,15 @@ JH.InvMgr.Add = function(type, count) {
 	return addCount;
 };
 
+JH.InvMgr.ForceAdd = function(obj, count) {
+	var added = JH.InvMgr.Add(obj, count);
+	if (added == count) { return; }
+	
+	// can't add all of it into the pack, we need to drop the remainder on the ground
+	var playerCoord = JH.MD.GetUserGlobalTile();
+	JH.Tile.AddLoot(JH.MMgr.GetTile(playerCoord[0], playerCoord[1]), obj, count);
+};
+
 JH.InvMgr.Remove = function(type, count) {
 	var obj = JH.Item.Create(type);
 	for (var i=0 ; i<JH.InvMgr.items.length ; i++) {

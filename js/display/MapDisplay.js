@@ -1,6 +1,5 @@
 JH.MD = {};
 JH.MD.cells = [];
-JH.MD.userTile = [];
 JH.MD.referenceTile = [];
 JH.MD.tilesAroundUser = 8;
 JH.MD.activeTarget;
@@ -80,4 +79,8 @@ JH.MD.MoveDown = function() {
 
 JH.MD.GetUniversalTile = function(i, j) {
 	return JH.MMgr.GetTile(JH.MD.referenceTile[0] + i, JH.MD.referenceTile[1] + j);
+};
+
+JH.MD.GetUserGlobalTile = function() {
+	return [JH.MD.referenceTile[0] + JH.MD.tilesAroundUser, JH.MD.referenceTile[1] + JH.MD.tilesAroundUser];
 };

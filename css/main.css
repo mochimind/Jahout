@@ -4,6 +4,7 @@
 }
 
 #map {
+	display: block;
 	border-collapse: collapse;
 	border-spacing: 0px;
 	position: absolute;

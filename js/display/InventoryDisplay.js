@@ -7,7 +7,7 @@ JH.InvDisp.Init = function() {
 };
 
 JH.InvDisp.ShowPanel = function() {
-	$("#map").hide();
+	$(".popup").hide();
 	$("#inventory").show();
 };
 
@@ -17,10 +17,10 @@ JH.InvDisp.HidePanel = function() {
 };
 
 JH.InvDisp.TogglePanel = function() {
-	if ($("#map").is(":visible")) {
-		JH.InvDisp.ShowPanel();
-	} else {
+	if ($("#inventory").is(":visible")) {
 		JH.InvDisp.HidePanel();
+	} else {
+		JH.InvDisp.ShowPanel();
 	}
 };
 
@@ -30,10 +30,8 @@ JH.InvDisp.Update = function() {
 	while (true) {
 		if (JH.InvDisp.cells.length <= dispIndex) {
 			if (JH.InvMgr.items.length <= dataIndex) {
-				console.log("done");
 				return;
 			} else {
-				console.log("new");
 				var addItem = $("<li>" + JH.InvMgr.items[dataIndex][0].type + ": " + JH.InvMgr.items[dataIndex][1] + "</li>");
 				$("#inventory").append(addItem);
 				JH.InvDisp.cells.push(addItem);

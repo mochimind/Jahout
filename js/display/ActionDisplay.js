@@ -54,7 +54,6 @@ JH.ActionDisp.RemoveAction = function() {
 };
 
 JH.ActionDisp.AddAction = function(name, callback, args) {
-	console.log("adding action " + name);
 	var rowAdded = false;
 	var rowNum = Math.floor((JH.ActionDisp.cells.length + 1) / JH.ActionDisp.width);
 	var row;

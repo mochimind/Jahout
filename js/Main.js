@@ -1,7 +1,5 @@
 var JH = {};
 JH.Main = {};
-JH.Main.keydown = false;
-JH.Main.keyTiming = 200;
 
 $(function(){
 	JH.UM.Init();

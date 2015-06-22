@@ -46,6 +46,13 @@ JH.Tile.GetImg = function(tile) {
 
 JH.Tile.GetDescription = function(tile) {
 	if (tile.unit != null) { return tile.unit.description; }
+	if (tile.loot != null) { 
+		var outStr = "";
+		for (var i=0 ; i<tile.loot.length ; i++) {
+			outStr += tile.loot[i][0] + " " + tile.loot[i][1] + ",";
+		}
+		return outStr;
+	}
 	if (tile.terrain == JH.Tile.GravelTerrain) {
 		return "Gravel Terrain: A nondescript patch of dirty dirt. Useful if you like dirt";
 	} else if (tile.terrain == JH.Tile.RockyTerrain) {

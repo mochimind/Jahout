@@ -14,7 +14,7 @@ JH.Unit.Create = function(type, coords) {
 		outObj.damage = 15;
 		outObj.description = "Billow: A mostly harmless slow chubby meaty thing. Mostly harmless";
 		outObj.ai = JH.AI.Create(JH.AI.neutral);
-		outObj.loot = [[JH.Item.citizen, 1]];
+		outObj.loot = [[JH.Item.billowcorpse, 1]];
 	} else if (type == JH.Unit.Player) {
 		outObj.img = "img/dude.png";
 		outObj.hp = [1000, 1000];

@@ -7,6 +7,7 @@ JH.Item.slot.clothes = 3;
 JH.Item.slot.utility = 4;
 JH.Item.slot.pack = 5;
 JH.Item.slot.hand = 0;
+JH.Item.slot.weapon = -1;
 
 JH.Item.citizen = "USF Citizen";
 JH.Item.dsevest = "DSE Vest";
@@ -15,6 +16,9 @@ JH.Item.dsehelmet = "DSE Helmet";
 JH.Item.dsemule = "DSE Mule";
 JH.Item.msdoc = "MedServ Doc";
 JH.Item.echef = "Everyman Chef";
+JH.Item.rawmeat = "Mystery Meat";
+JH.Item.rawwater = "Alien Water";
+JH.Item.billowcorpse = "Billow Corpse";
 
 JH.Item.Create = function(type) {
 	
@@ -57,6 +61,9 @@ JH.Item.Create = function(type) {
 		obj.slot = JH.Item.slot.utility;
 		obj.bulk = 6;
 		obj.weight = 8;
+	} else if (type == JH.Item.billowcorpse) {
+		obj.bulk = 500;
+		obj.weight = 300;
 	} else {
 		return null;
 	}
