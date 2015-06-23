@@ -2,6 +2,8 @@ JH.MMgr = {};
 
 JH.MMgr.map = {};
 JH.MMgr.spawn = [0,0];
+JH.MMgr.biomeDist = 250;
+JH.MMgr.biomes = [];
 
 JH.MMgr.Init = function() {
 	
@@ -13,6 +15,11 @@ JH.MMgr.GetTile = function(ycoord, xcoord) {
 	var blockKey = ""+blockY+"|"+blockX;
 	// may need to optimize this. create a 4 block buffer in this function that's looked at first before hitting the hashtable
 	if (JH.MMgr.map[blockKey] == undefined) {
+		// check to see if we need to create a biome
+		
+		
+		
+		// create the tile
 		JH.MMgr.map[blockKey] = JH.MapBlock.Create();
 	}
 	return JH.MapBlock.GetTile(JH.MMgr.map[blockKey], Math.abs(ycoord % JH.MapBlock.size), Math.abs(xcoord % JH.MapBlock.size));

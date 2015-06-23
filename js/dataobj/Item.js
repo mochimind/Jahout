@@ -9,6 +9,12 @@ JH.Item.slot.pack = 5;
 JH.Item.slot.hand = 0;
 JH.Item.slot.weapon = -1;
 
+JH.Item.type = {};
+JH.Item.type.equipment = 0;
+JH.Item.type.consumable = 1;
+JH.Item.type.resource = 2;
+JH.Item.type.furniture = 3;
+
 JH.Item.citizen = "USF Citizen";
 JH.Item.dsevest = "DSE Vest";
 JH.Item.spacesuit = "Pressurized Space Suit";
@@ -19,6 +25,7 @@ JH.Item.echef = "Everyman Chef";
 JH.Item.rawmeat = "Mystery Meat";
 JH.Item.rawwater = "Alien Water";
 JH.Item.billowcorpse = "Billow Corpse";
+JH.Item.wheelbarrow = "Wheel Barrow";
 
 JH.Item.Create = function(type) {
 	

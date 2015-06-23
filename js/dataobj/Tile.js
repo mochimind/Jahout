@@ -29,7 +29,10 @@ JH.Tile.GetImg = function(tile) {
 	if (tile.unit != null) { return tile.unit.img; }
 	if (tile.loot.length != 0) {
 		return "img/loot.png";
-	} else if (tile.terrain == JH.Tile.GravelTerrain) {
+	}
+	if (tile.building != null) { return tile.building.img; }
+
+	if (tile.terrain == JH.Tile.GravelTerrain) {
 		return "img/gravel.png";
 	} else if (tile.terrain == JH.Tile.RockyTerrain) {
 		return "img/rocky.png";
@@ -46,13 +49,14 @@ JH.Tile.GetImg = function(tile) {
 
 JH.Tile.GetDescription = function(tile) {
 	if (tile.unit != null) { return tile.unit.description; }
-	if (tile.loot != null) { 
+	if (tile.loot != null && tile.loot.length != 0) { 
 		var outStr = "";
 		for (var i=0 ; i<tile.loot.length ; i++) {
 			outStr += tile.loot[i][0] + " " + tile.loot[i][1] + ",";
 		}
 		return outStr;
 	}
+	if (tile.building != null) { return tile.building.description; }
 	if (tile.terrain == JH.Tile.GravelTerrain) {
 		return "Gravel Terrain: A nondescript patch of dirty dirt. Useful if you like dirt";
 	} else if (tile.terrain == JH.Tile.RockyTerrain) {

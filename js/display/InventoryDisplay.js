@@ -7,12 +7,10 @@ JH.InvDisp.Init = function() {
 };
 
 JH.InvDisp.ShowPanel = function() {
-	$(".popup").hide();
 	$("#inventory").show();
 };
 
 JH.InvDisp.HidePanel = function() {
-	$("#map").show();
 	$("#inventory").hide();	
 };
 

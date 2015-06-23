@@ -4,7 +4,6 @@
 }
 
 #map {
-	display: block;
 	border-collapse: collapse;
 	border-spacing: 0px;
 	position: absolute;
@@ -14,9 +13,19 @@
 
 .popup {
 	position: absolute;
-	left: 0px;
 	top: 0px;
+	width: 280px;
+	height: 400px;
 	display: none;
+	background-color: #ccffff;
+}
+
+#equipment {
+	left: 0px;
+}
+
+#inventory {
+	left: 300px;
 }
 
 #stats {

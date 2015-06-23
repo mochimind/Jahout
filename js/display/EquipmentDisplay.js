@@ -6,12 +6,10 @@ JH.ItemD.Init = function() {
 };
 
 JH.ItemD.ShowPanel = function() {
-	$(".popup").hide();
 	$("#equipment").show();
 };
 
 JH.ItemD.HidePanel = function() {
-	$("#map").show();
 	$("#equipment").hide();
 };
 

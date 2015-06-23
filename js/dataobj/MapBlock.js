@@ -18,13 +18,17 @@ JH.MapBlock.GetTile = function(block, ycoord, xcoord) {
 
 JH.MapBlock.GenerateTile = function() {
 	var picker = Math.random() * 1000;
+	var featurePicker = Math.random() * 100;
 	var tileType;
-	var building;
+	var building = null;
 	
 	if (picker < 180) {
 		tileType = JH.Tile.GravelTerrain;
 	} else if (picker < 700) {
 		tileType = JH.Tile.GrassTerrain;
+		if (featurePicker < 15) {
+			building = JH.Building.Create(JH.Building.tree);
+		}
 	} else if (picker < 800) {
 		tileType = JH.Tile.SandTerrain;
 	} else if (picker < 870) {
@@ -35,12 +39,7 @@ JH.MapBlock.GenerateTile = function() {
 		tileType = JH.Tile.MountainTerrain;
 	}
 	
-	// now determine terrain features
-	picker = Math.random() * 100;
-	if (picker < 15) {
-		
-	}
-	return JH.Tile.Create(tileType, null, null);
+	return JH.Tile.Create(tileType, building, null);
 };
 
 
