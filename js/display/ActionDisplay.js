@@ -64,7 +64,7 @@ JH.ActionDisp.AddAction = function(name, callback, args) {
 	} else {
 		row = $("#actions_" + Math.floor(rowNum));
 	}
-	var label = $("<label></label>");
+	var label = $("<button></button>");
 	row.append($("<td id='actions_" + rowNum + "_" + (JH.ActionDisp.cells.length + 1)%JH.ActionDisp.width + "'></td>").append(label));
 	
 	label.click(function() { callback(args); });

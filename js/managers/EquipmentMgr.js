@@ -9,6 +9,14 @@ JH.EM.Init = function() {
 	}
 };
 
+// pick up puts it into the player's hands, not pack. The player can pick up anything
+JH.EM.Pickup = function(type) {
+	console.log("got: " + type);
+	JH.EM.Unequip(JH.Item.slot.hand);
+	JH.EM.equipment[JH.Item.slot.hand] = JH.Item.Create(type);
+	JH.ItemD.Update();
+};
+
 JH.EM.Equip = function(item) {
 	if (item.slot == JH.Item.slot.weapon) {
 		if (JH.EM.holster != undefined) {
@@ -30,8 +38,19 @@ JH.EM.Equip = function(item) {
 
 JH.EM.Unequip = function(slotNumber) {
 	var removeObj = JH.EM.GetItem(slotNumber);
-	if (slotNumber == JH.EM.weapon) {
+	if (removeObj == null) { return; }
+	
+	if (slotNumber == JH.Item.slot.weapon) {
 		JH.EM.holster = null;
+	} else if (slotNumber == JH.Item.slot.hand) {
+		if (removeObj.slot == JH.Item.slot.weapon) {
+			var weapon = JH.EM.GetItem(JH.Item.slot.weapon);
+			if (weapon != null) {
+				JH.EM.holster = removeObj;
+				removeObj = weapon;
+			}
+		}
+		JH.EM.equipment[slotNumber] = null;			
 	} else {
 		JH.EM.equipment[slotNumber] = null;
 	}

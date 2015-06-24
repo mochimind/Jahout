@@ -79,7 +79,7 @@ JH.Item.Create = function(type) {
 	} else if (type == JH.Item.billowcorpse) {
 		obj.bulk = 500;
 		obj.weight = 300;
-	} else if (type == JH.Item.logs) {
+	} else if (type == JH.Item.log) {
 		obj.bulk = 300;
 		obj.weight = 200;
 	} else {
