@@ -21,6 +21,7 @@ JH.MMgr.GetTile = function(ycoord, xcoord) {
 		
 		// create the tile
 		JH.MMgr.map[blockKey] = JH.MapBlock.Create();
+		JH.MobGenerator.PopulateBlock(JH.MMgr.map[blockKey], blockY, blockX);
 	}
 	return JH.MapBlock.GetTile(JH.MMgr.map[blockKey], Math.abs(ycoord % JH.MapBlock.size), Math.abs(xcoord % JH.MapBlock.size));
 };

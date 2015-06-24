@@ -31,13 +31,19 @@ JH.MapBlock.GenerateTile = function() {
 		}
 	} else if (picker < 800) {
 		tileType = JH.Tile.SandTerrain;
+	} else {
+		tileType = JH.Tile.RockyTerrain;
+	}
+		/*
 	} else if (picker < 870) {
 		tileType = JH.Tile.RockyTerrain;
+	}
 	}  else if (picker < 930) {
 		tileType = JH.Tile.WaterTerrain;
 	} else {
 		tileType = JH.Tile.MountainTerrain;
 	}
+	*/
 	
 	return JH.Tile.Create(tileType, building, null);
 };

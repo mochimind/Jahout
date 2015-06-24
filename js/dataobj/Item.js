@@ -22,10 +22,14 @@ JH.Item.dsehelmet = "DSE Helmet";
 JH.Item.dsemule = "DSE Mule";
 JH.Item.msdoc = "MedServ Doc";
 JH.Item.echef = "Everyman Chef";
+JH.Item.cutter = "Utility Cutter";
+
 JH.Item.rawmeat = "Mystery Meat";
 JH.Item.rawwater = "Alien Water";
 JH.Item.billowcorpse = "Billow Corpse";
 JH.Item.wheelbarrow = "Wheel Barrow";
+JH.Item.logs = "Logs";
+
 
 JH.Item.Create = function(type) {
 	
@@ -68,9 +72,16 @@ JH.Item.Create = function(type) {
 		obj.slot = JH.Item.slot.utility;
 		obj.bulk = 6;
 		obj.weight = 8;
+	} else if (type == JH.Item.cutter) {
+		obj.slot = JH.Item.weapon;
+		obj.bulk = 10;
+		obj.weight = 9;
 	} else if (type == JH.Item.billowcorpse) {
 		obj.bulk = 500;
 		obj.weight = 300;
+	} else if (type == JH.Item.logs) {
+		obj.bulk = 300;
+		obj.weight = 200;
 	} else {
 		return null;
 	}
