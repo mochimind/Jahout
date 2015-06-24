@@ -28,7 +28,7 @@ JH.Item.rawmeat = "Mystery Meat";
 JH.Item.rawwater = "Alien Water";
 JH.Item.billowcorpse = "Billow Corpse";
 JH.Item.wheelbarrow = "Wheel Barrow";
-JH.Item.logs = "Logs";
+JH.Item.log = "Log";
 
 
 JH.Item.Create = function(type) {

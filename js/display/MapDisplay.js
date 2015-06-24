@@ -35,13 +35,17 @@ JH.MD.Redraw = function() {
 			JH.MD.cells[i][j].attr("src", JH.Tile.GetImg(JH.MD.GetUniversalTile(i,j)));
 		}
 	}
+
+	var desty = JH.MD.referenceTile[0]+JH.MD.tilesAroundUser;
+	var destx = JH.MD.referenceTile[1]+JH.MD.tilesAroundUser;
+	JH.LootDisp.HandleTile(desty, destx);
+	JH.BuildingDisp.HandleTile(desty, destx);
 };
 
 JH.MD.MoveLeft = function() {
 	var desty = JH.MD.referenceTile[0]+JH.MD.tilesAroundUser;
 	var destx = JH.MD.referenceTile[1]+JH.MD.tilesAroundUser-1;
 	if (!JH.MMgr.GetTile(desty, destx).traversable) { return;}
-	JH.LootDisp.HandleTile(desty, destx);
 	JH.Unit.MoveToTile(JH.MD.player, desty, destx);
 	JH.MD.referenceTile[1] -= 1;
 	JH.TM.PlayerAction();
@@ -51,7 +55,6 @@ JH.MD.MoveUp = function() {
 	var desty = JH.MD.referenceTile[0]+JH.MD.tilesAroundUser-1;
 	var destx = JH.MD.referenceTile[1]+JH.MD.tilesAroundUser;
 	if (!JH.MMgr.GetTile(desty, destx).traversable) { return;}
-	JH.LootDisp.HandleTile(desty, destx);
 	JH.Unit.MoveToTile(JH.MD.player, desty, destx);
 	JH.MD.referenceTile[0] -= 1;
 	JH.TM.PlayerAction();
@@ -61,7 +64,6 @@ JH.MD.MoveRight = function() {
 	var desty = JH.MD.referenceTile[0]+JH.MD.tilesAroundUser;
 	var destx = JH.MD.referenceTile[1]+JH.MD.tilesAroundUser+1;
 	if (!JH.MMgr.GetTile(desty, destx).traversable) { return;}
-	JH.LootDisp.HandleTile(desty, destx);
 	JH.Unit.MoveToTile(JH.MD.player, desty, destx);
 	JH.MD.referenceTile[1] += 1;
 	JH.TM.PlayerAction();
@@ -71,7 +73,6 @@ JH.MD.MoveDown = function() {
 	var desty = JH.MD.referenceTile[0]+JH.MD.tilesAroundUser+1;
 	var destx = JH.MD.referenceTile[1]+JH.MD.tilesAroundUser;
 	if (!JH.MMgr.GetTile(desty, destx).traversable) { return;}
-	JH.LootDisp.HandleTile(desty, destx);
 	JH.Unit.MoveToTile(JH.MD.player, desty, destx);
 	JH.MD.referenceTile[0] += 1;
 	JH.TM.PlayerAction();

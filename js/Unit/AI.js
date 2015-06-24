@@ -123,7 +123,6 @@ JH.AI.MoveTowards = function(unit, coords) {
 };
 
 JH.AI.MoveInDirection = function(unit, direction) {
-	console.log("moving in direction" + "||" + direction);
 	var destX;
 	var destY;
 	switch(direction) {

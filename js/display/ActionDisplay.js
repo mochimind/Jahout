@@ -44,7 +44,7 @@ JH.ActionDisp.RemoveAction = function() {
 	for (var i=JH.ActionDisp.cells.length-1 ; i>=0 ; i--) {
 		for (var j=JH.ActionDisp.width-1 ; j>=0 ; j--) {
 			if (JH.ActionDisp.cells[i][j] != null) {
-				JH.ActionDisp.cells[i][j].remove();
+				JH.ActionDisp.cells[i][j].parent().remove();
 				JH.ActionDisp.cells[i].splice(j,1);
 				return;
 			}
