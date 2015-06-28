@@ -50,8 +50,11 @@ JH.InvMgr.Remove = function(type, count) {
 				JH.InvMgr.items.splice(i, 1);
 			}
 			JH.InvDisp.Update();
+			
+			return removeCount;
 		}
 	}
+	return 0;
 };
 
 

@@ -65,3 +65,21 @@ JH.EM.GetItem = function(slotNumber) {
 	}
 	return JH.EM.equipment[slotNumber];
 };
+
+JH.EM.Remove = function(type) {
+	for (var i=0 ; i<JH.EM.equipment.length ; i++) {
+		if (JH.EM.equipment[i] != null && JH.EM.equipment[i].type == type) {
+			JH.EM.equipment[i] = null;
+			JH.ItemD.Update();
+			return 1;
+		}
+	}
+	
+	if (JH.EM.holster != null && JH.EM.holster.type == type) {
+		JH.EM.holster = null;
+		JH.ItemD.Update();
+		return 1;
+	}
+	
+	return 0;
+};

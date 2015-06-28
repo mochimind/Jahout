@@ -85,7 +85,7 @@ JH.Item.Create = function(type) {
 		obj.weight = 200;
 	} else if (type == JH.Item.plank) {
 		obj.bulk = 110;
-		Obj.weight = 65;
+		obj.weight = 65;
 	} else {
 		return null;
 	}

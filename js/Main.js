@@ -28,6 +28,8 @@ $(function(){
 	JH.EM.Equip(JH.Item.Create(JH.Item.dsemule));
 	JH.EM.Equip(JH.Item.Create(JH.Item.msdoc));
 	JH.EM.Equip(JH.Item.Create(JH.Item.echef));
+	
+	JH.MMgr.GetTile(1,1).building = JH.Building.Create(JH.Building.sawmill);
 });
 
 JH.Main.Annotate = function(str) {
