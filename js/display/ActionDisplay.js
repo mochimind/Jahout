@@ -32,10 +32,10 @@ JH.ActionDisp.Update = function() {
 
 JH.ActionDisp.GetDispByIndex = function(index) {
 	if (JH.ActionDisp.cells.length == 0) { return null; }
-	var rows = Math.floor(JH.ActionDisp.cells.length / JH.ActionDisp.width);
-	if (Math.floor(index/JH.ActionDisp.width) > rows) { return null; }
-	if (index % 4 >= JH.ActionDisp.cells[rows].length) { return null; }
-	return JH.ActionDisp.cells[rows][index % 4];
+	var row = Math.floor(index / JH.ActionDisp.width);
+	if (row >= JH.ActionDisp.cells.length) { return null; }
+	if (index % 4 >= JH.ActionDisp.cells[row].length) { return null; }
+	return JH.ActionDisp.cells[row][index % 4];
 };
 
 // removes the last item in the action table
@@ -55,27 +55,42 @@ JH.ActionDisp.RemoveAction = function() {
 
 JH.ActionDisp.AddAction = function(name, callback, args) {
 	var rowAdded = false;
-	var rowNum = Math.floor((JH.ActionDisp.cells.length + 1) / JH.ActionDisp.width);
+	var count = 0;
 	var row;
-	if ((JH.ActionDisp.cells.length + 1) % JH.ActionDisp.width == 0 || JH.ActionDisp.cells.length == 0) {
-		JH.ActionDisp.cells.push([]);
-		row = $("<tr id='actions_" + rowNum + "' style='padding: 0px; margin: 0px;'></tr>");
-		rowAdded = true;
-	} else {
-		row = $("#actions_" + Math.floor(rowNum));
+	while (true) {
+		var rowNum = Math.floor(count / JH.ActionDisp.width);
+		var colNum = count % JH.ActionDisp.width;
+
+		if (JH.ActionDisp.cells.length <= rowNum) {
+			JH.ActionDisp.cells.push([]);
+			row = $("<tr id='actions_" + rowNum + "' style='padding: 0px; margin: 0px;'></tr>");
+			rowAdded = true;
+		} else {
+			row = $("#actions_" + rowNum);
+		}
+		
+		if (JH.ActionDisp.cells[rowNum].length <= colNum) {
+			JH.ActionDisp.cells[rowNum].push(null);
+		}
+		
+		if (JH.ActionDisp.cells[rowNum][colNum] == null) {
+			// insert here
+			var label = $("<button></button>");
+			row.append($("<td id='actions_" + rowNum + "_" + colNum + "'></td>").append(label));
+			label.click(function() { callback(args); });
+			label.text(name);
+
+			JH.ActionDisp.cells[rowNum][colNum] = label;
+			break;
+		}
+		
+		count++;
 	}
-	var label = $("<button></button>");
-	row.append($("<td id='actions_" + rowNum + "_" + (JH.ActionDisp.cells.length + 1)%JH.ActionDisp.width + "'></td>").append(label));
-	
-	label.click(function() { callback(args); });
-	label.text(name);
 	
 	if (rowAdded) {
 		$("#actions").append(row);
 	}
 	
-	JH.ActionDisp.cells[rowNum].push(label);
-
 };
 
 

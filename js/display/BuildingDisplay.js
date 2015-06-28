@@ -1,8 +1,7 @@
 JH.BuildingDisp = {};
 JH.BuildingDisp.keys = [];
 
-JH.BuildingDisp.HandleTile = function(desty, destx) {
-	var tile = JH.MMgr.GetTile(desty, destx);
+JH.BuildingDisp.HandleTile = function(tile) {
 	JH.BuildingDisp.RemoveActions();
 	
 	var action = JH.Building.GetActionName(tile.building);

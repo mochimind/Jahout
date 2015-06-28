@@ -27,6 +27,8 @@ JH.MD.Init = function() {
 		}
 		JH.MD.container.append(tr);
 	}
+	
+	JH.MD.Redraw();
 };
 
 JH.MD.Redraw = function() {
@@ -36,10 +38,10 @@ JH.MD.Redraw = function() {
 		}
 	}
 
-	var desty = JH.MD.referenceTile[0]+JH.MD.tilesAroundUser;
-	var destx = JH.MD.referenceTile[1]+JH.MD.tilesAroundUser;
-	JH.LootDisp.HandleTile(desty, destx);
-	JH.BuildingDisp.HandleTile(desty, destx);
+	var tile = JH.MMgr.GetTile(JH.MD.referenceTile[0]+JH.MD.tilesAroundUser, JH.MD.referenceTile[1]+JH.MD.tilesAroundUser);
+	JH.LootDisp.HandleTile(tile);
+	JH.BuildingDisp.HandleTile(tile);
+	JH.ConstructDisp.HandleTile(tile);
 };
 
 JH.MD.MoveLeft = function() {

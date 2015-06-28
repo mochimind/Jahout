@@ -1,0 +1,4 @@
+JH.ConstructMgr = {};
+
+
+

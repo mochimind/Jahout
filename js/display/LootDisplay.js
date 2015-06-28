@@ -1,7 +1,6 @@
 JH.LootDisp = {};
 
-JH.LootDisp.HandleTile = function(desty, destx) {
-	var destTile = JH.MMgr.GetTile(desty, destx);
+JH.LootDisp.HandleTile = function(destTile) {
 	if (destTile.loot.length == 0 && JH.LootDisp.lootKey != undefined) {
 		JH.ActionMgr.RemoveAction(JH.LootDisp.lootKey);
 		JH.ActionMgr.RemoveAction(JH.LootDisp.pickupKey);
