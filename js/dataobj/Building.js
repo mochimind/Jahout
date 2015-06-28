@@ -1,6 +1,9 @@
 JH.Building = {};
 
 JH.Building.tree = "tree";
+JH.Building.sawmill = "sawmill";
+JH.Building.butcher = "butcher table";
+JH.Building.blueprint = "blueprint";
 
 JH.Building.Create = function(type) {
 	var obj = {};
@@ -11,6 +14,22 @@ JH.Building.Create = function(type) {
 		obj.chops = 3;
 	}
 	
+	return obj;
+};
+
+JH.Building.CreateBlueprint = function(type) {
+	var obj = {};
+	obj.type = JH.Building.blueprint;
+	obj.blueprint = type;
+	if (type == JH.Building.sawmill) {
+		obj.buildTime = 5;
+		obj.resources = [[JH.Item.plank, 5]];
+	} else if (type == JH.Building.butcher) {
+		obj.buildTime = 4;
+		obj.resources = [[JH.Item.plank, 4]];
+	}
+	obj.description = "This " + type + " is still being built";
+	obj.img = "img/blueprint.png";
 	return obj;
 };
 
@@ -39,7 +58,4 @@ JH.Building.GetAction = function(building, tile) {
 	}
 };
 
-JH.Building.Blueprint = function (type, xcood, ycoord) {
-	
-};
 

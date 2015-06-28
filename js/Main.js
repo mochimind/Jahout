@@ -15,6 +15,7 @@ $(function(){
 	
 	JH.ItemD.Init();
 	JH.InvDisp.Init();
+	JH.ConstructDisp.Init();
 	JH.KeyMgr.Init();
 
 	JH.Main.Annotate("Welcome to Jahout");

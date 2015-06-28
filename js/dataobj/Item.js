@@ -29,6 +29,7 @@ JH.Item.rawwater = "Alien Water";
 JH.Item.billowcorpse = "Billow Corpse";
 JH.Item.wheelbarrow = "Wheel Barrow";
 JH.Item.log = "Log";
+JH.Item.plank = "plank";
 
 
 JH.Item.Create = function(type) {
@@ -82,6 +83,9 @@ JH.Item.Create = function(type) {
 	} else if (type == JH.Item.log) {
 		obj.bulk = 300;
 		obj.weight = 200;
+	} else if (type == JH.Item.plank) {
+		obj.bulk = 110;
+		Obj.weight = 65;
 	} else {
 		return null;
 	}

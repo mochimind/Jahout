@@ -29,6 +29,7 @@ JH.MD.Init = function() {
 	}
 	
 	JH.MD.Redraw();
+	JH.Unit.MoveToTile(JH.MD.player, 0,0);
 };
 
 JH.MD.Redraw = function() {
@@ -85,5 +86,5 @@ JH.MD.GetUniversalTile = function(i, j) {
 };
 
 JH.MD.GetUserGlobalTile = function() {
-	return [JH.MD.referenceTile[0] + JH.MD.tilesAroundUser, JH.MD.referenceTile[1] + JH.MD.tilesAroundUser];
+	return JH.MMgr.GetTile(JH.MD.referenceTile[0] + JH.MD.tilesAroundUser, JH.MD.referenceTile[1] + JH.MD.tilesAroundUser);
 };
