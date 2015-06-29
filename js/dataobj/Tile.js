@@ -72,6 +72,17 @@ JH.Tile.GetDescription = function(tile) {
 	}
 };
 
+JH.Tile.DumpTile = function(tile) {
+	console.log("Tile DUMP START: ");
+	console.log("terrain: " + tile.terrain);
+	if (tile.building == null) {
+		console.log("building: " + null);
+	} else {
+		console.log ("building: " + tile.building.type);		
+	}
+	console.log("unit: " + tile.unit == null ? "null" : tile.unit.type);
+};
+
 JH.Tile.AddLoot = function(tile, loot, count) {
 	tile.loot.push([loot, count]);
 };

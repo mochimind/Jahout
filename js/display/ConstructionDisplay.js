@@ -12,6 +12,8 @@ JH.ConstructDisp.HandleTile = function(tile) {
 	// TODO: we may want to reuse build keys here, otherwise, we're going to hit a interger overflow eventually
 	if (tile.building == null) {
 		JH.ConstructDisp.buildKey = JH.ActionMgr.AddAction("Blueprint", JH.ConstructDisp.ToggleBuildPanel);
+	} else if (tile.building.type == JH.Building.blueprint) {
+		JH.ConstructDisp.buildKey = JH.ActionMgr.AddAction("Build", JH.ConstructMgr.Build, tile);
 	}
 };
 

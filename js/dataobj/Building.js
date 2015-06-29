@@ -27,10 +27,10 @@ JH.Building.CreateBlueprint = function(type) {
 	obj.blueprint = type;
 	if (type == JH.Building.sawmill) {
 		obj.buildTime = 5;
-		obj.resources = [[JH.Item.plank, 5]];
+		obj.resources = [[JH.Item.plank, 5, 0]];
 	} else if (type == JH.Building.butcher) {
 		obj.buildTime = 4;
-		obj.resources = [[JH.Item.plank, 4]];
+		obj.resources = [[JH.Item.plank, 4, 0]];
 	}
 	obj.description = "This " + type + " is still being built";
 	obj.img = "img/blueprint.png";
@@ -56,10 +56,10 @@ JH.Building.GetAction = function(building, tile) {
 				JH.Tile.AddLoot(tile, JH.Item.log, 3);				
 				JH.Main.Annotate("The tree succumbs to your onslaught");
 				JH.BuildingDisp.RemoveActions();
-				JH.TM.PlayerAction();
 			} else {
 				JH.Main.Annotate("You valiantly strike the tree with all your might but it does not yield");
 			}
+			JH.TM.PlayerAction();
 		};
 	} else if (building.type == JH.Building.sawmill) {
 		return function() {
