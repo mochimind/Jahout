@@ -142,6 +142,9 @@ JH.AI.MoveInDirection = function(unit, direction) {
 		destX = unit.coords[1];
 		destY = unit.coords[0]+1;
 		break;
+	default:
+		console.log("Error moving unit");
+		return;
 	}
 	
 	var destTile = JH.MMgr.GetTile(destY, destX);
